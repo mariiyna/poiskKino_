@@ -1,0 +1,40 @@
+html {
+  font-size: 16px;
+}
+
+.pagination-container {
+  display: flex;
+  column-gap: 10px;
+}
+
+.paginate-buttons {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border:none;
+  cursor: pointer;
+  background-color: #d14234;
+  color: white;
+  box-shadow: 2px 2px 5px rgb(17, 17, 17);
+  transition: all .2s ;
+
+  &:hover {
+    background-color: #9e332c;
+  }
+}
+
+.active-page {
+  background-color: #f58378;
+  color: white;
+}
+
+@media (max-width: 500px) {
+  .paginate-buttons {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.max-width-1500 {
+  max-width: 1500px;
+}
