@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia';
-import { useFilterStore } from '@/stores//FilterStore';
+import { defineStore } from "pinia";
+import { useFilterStore } from "@/stores//FilterStore";
 
-export const useMovieStore = defineStore('MovieStore', {
+export const useMovieStore = defineStore("MovieStore", {
   state: () => ({
     movies: [],
     sortedMovies: [],
@@ -14,9 +14,9 @@ export const useMovieStore = defineStore('MovieStore', {
   getters: {
     getAllYears(state) {
       if (state.movies.length) {
-        const years = Array.from(new Set(state.movies.map((movie) => movie.year.toString()))).sort(
-          (a, b) => b - a,
-        );
+        const years = Array.from(
+          new Set(state.movies.map((movie) => movie.year.toString())),
+        ).sort((a, b) => b - a);
         return [...years];
       }
       return [];
@@ -29,14 +29,15 @@ export const useMovieStore = defineStore('MovieStore', {
         return;
       }
       try {
-        const response = await fetch('../../db.json');
+        const response = await fetch("/public/db.json");
         if (!response.ok) {
-          throw new Error('Ошибка при загрузке данных');
+          throw new Error("Ошибка при загрузке данных");
         }
         const data = await response.json();
         this.movies = data.docs;
       } catch (error) {
-        console.log(error);
+        console.error("Ошибка загрузки db.json:", error);
+        throw error;
       }
     },
 
@@ -58,18 +59,18 @@ export const useMovieStore = defineStore('MovieStore', {
     // детальный просмотр
     setDetailedMovie(movie) {
       this.detailedMovie = movie;
-      localStorage.setItem('detailedMovie', JSON.stringify(movie));
+      localStorage.setItem("detailedMovie", JSON.stringify(movie));
     },
 
     getDetailedMovie() {
       if (this.detailedMovie) {
         return this.detailedMovie;
       }
-      return JSON.parse(localStorage.getItem('detailedMovie'));
+      return JSON.parse(localStorage.getItem("detailedMovie"));
     },
 
     resetCurrentPage() {
       this.currentPage = 1;
-    }
+    },
   },
 });
