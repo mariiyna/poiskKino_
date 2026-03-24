@@ -25,11 +25,12 @@ export const useMovieStore = defineStore("MovieStore", {
 
   actions: {
     async fetchMovie() {
+      const base = import.meta.env.BASE_URL;
       if (this.movies.length) {
         return;
       }
       try {
-        const response = await fetch("/public/db.json");
+        const response = await fetch(`${base}db.json`);
         if (!response.ok) {
           throw new Error("Ошибка при загрузке данных");
         }
