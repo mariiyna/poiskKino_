@@ -1,30 +1,30 @@
-import { createWebHistory, createRouter } from 'vue-router';
-import HomePage from '@/pages/HomePage.vue';
-import MoviePage from '@/pages/MoviePage.vue';
-import FavoritesPage from '@/pages/FavoritesPage.vue';
-import RatedPage from '@/pages/RatedPage.vue';
+import { createWebHistory, createRouter } from "vue-router";
+import HomePage from "@/pages/HomePage.vue";
+import MoviePage from "@/pages/MoviePage.vue";
+import FavoritesPage from "@/pages/FavoritesPage.vue";
+import RatedPage from "@/pages/RatedPage.vue";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     component: HomePage,
   },
   {
-    path: '/movies/:id',
+    path: "/movies/:id",
     component: MoviePage,
   },
   {
-    path: '/favorites',
+    path: "/favorites",
     component: FavoritesPage,
   },
   {
-    path: '/rated',
+    path: "/rated",
     component: RatedPage,
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory("/poiskKino_/"),
   routes,
 });
 
